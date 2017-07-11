@@ -8,3 +8,5 @@ error.log
 docker-compose-tagging.yaml
 env.sh
 .env
+secret*.yaml
+configmap*.yaml

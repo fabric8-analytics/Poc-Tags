@@ -2,7 +2,7 @@ import os
 
 TESTING = False
 DEBUG = False
-LOGFILE_PATH = os.environ.get("LOGFILE_PATH", "error.log")
+LOGFILE_PATH = os.environ.get("LOGFILE_PATH", "/tmp/error.log")
 OK_MESSAGE = "Alohomora!"
 
 GREMLIN_SERVER_URL_REST = os.environ.get("GREMLIN_REST", "http://localhost:8181")

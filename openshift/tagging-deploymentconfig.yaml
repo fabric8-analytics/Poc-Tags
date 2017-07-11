@@ -1,0 +1,61 @@
+apiVersion: v1
+kind: DeploymentConfig
+metadata:
+  creationTimestamp: null
+  labels:
+    io.kompose.service: tagging
+  name: tagging
+spec:
+  replicas: 1
+  selector:
+    io.kompose.service: tagging
+  strategy:
+    resources: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        io.kompose.service: tagging
+    spec:
+      containers:
+      - command:
+        - /bin/entrypoint.sh
+        env:
+        - name: GREMLIN_SERVER_URL_REST
+          valueFrom: 
+            secretKeyRef:
+              name: tagging
+              key: gremlinresturl
+        - name: AWS_ACCESS_KEY
+          valueFrom: 
+            secretKeyRef:
+              name: tagging
+              key: awsaccesskey
+        - name: AWS_BUCKET
+          valueFrom: 
+            secretKeyRef:
+              name: tagging
+              key: awsbucket
+        - name: AWS_SECRET_KEY
+          valueFrom: 
+            secretKeyRef:
+              name: tagging
+              key: awssecretkey
+        image: ' '
+        name: tagging
+        ports:
+        - containerPort: 9000
+        resources: {}
+      restartPolicy: Always
+  test: false
+  triggers:
+  - type: ConfigChange
+  - imageChangeParams:
+      automatic: true
+      containerNames:
+      - tagging
+      from:
+        kind: ImageStreamTag
+        name: tagging:latest
+    type: ImageChange
+status: {}
