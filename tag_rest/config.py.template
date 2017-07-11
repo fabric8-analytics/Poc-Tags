@@ -1,0 +1,8 @@
+import os
+
+TESTING = False
+DEBUG = True
+LOGFILE_PATH = os.environ.get("LOGFILE_PATH", "error.log")
+OK_MESSAGE = "Alohomora!"
+
+GREMLIN_SERVER_URL_REST = "http://<host>:<port>"
