@@ -5,3 +5,6 @@
 _manifest.json
 config.py
 error.log
+docker-compose-tagging.yaml
+env.sh
+.env
