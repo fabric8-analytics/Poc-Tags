@@ -6,3 +6,6 @@ LOGFILE_PATH = os.environ.get("LOGFILE_PATH", "error.log")
 OK_MESSAGE = "Alohomora!"
 
 GREMLIN_SERVER_URL_REST = "http://<host>:<port>"
+AWS_ACCESS_KEY = "<access_key>" 
+AWS_SECRET_KEY = "<secret_key>"
+AWS_BUCKET = "<target_bucket_name>"

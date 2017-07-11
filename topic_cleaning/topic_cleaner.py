@@ -15,7 +15,7 @@ class Cleaner(object):
 
     @staticmethod
     def load_stop_words():
-        stop_words = set
+        stop_words = set()
         with open('stop_words.txt', 'r') as f:
             for line in f.readlines():
                 stop_words.add(line[:-1]) # to remove \n at the end of words
