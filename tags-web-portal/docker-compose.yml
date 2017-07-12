@@ -1,0 +1,9 @@
+version: "2"
+services:
+  httpd:
+     build:
+       context: .
+       dockerfile: Dockerfile12
+     network_mode: bridge
+     ports:
+     - "8080:80"

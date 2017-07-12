@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Tag Portal</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.1/themes/base/jquery-ui.css" />
+    
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- Leave those next 4 lines if you care about users using IE8 -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+     <style>
+    ul { list-style-type: none; margin: 0; padding: 0; margin-bottom: 10px; position:relative }
+    li { margin: 5px; padding: 5px; width: 250px; }
+    .list-group-item {
+      word-wrap: break-word;
+    }
+    </style>
+  </head>
+  <body>
+
+
+
+    <!-- TODO: Here goes your content! -->
+    <nav class="navbar  navbar-default navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <p class="navbar-text">Tagging Portal</p>
+        </div>
+    </div>
+  </nav>
+    
+    <div class="container" style="margin-top: 80px;">
+
+      <div class="row" style="text-align: center;padding-bottom: 20px;">
+        <form class="form-inline">
+          <div class="form-group">
+            <label class="sr-only" for="inputEmail">User</label>
+            <select class="form-control" id="userSel">
+            </select>
+          </div>
+          <button id="getUserInfo" type="submit" class="btn btn-primary" onclick="getUserInfoFunc(event)">Submit</button>
+        </form>
+      </div>
+      <div id="user1" class="row">
+        <div class="row" style="background-color: grey;padding: 10px;color: #fff;">     
+          <p id="userTxt"></p>
+        </div>
+        <div class="row" style="padding-top: 20px;">
+          <div class="col-md-4">
+            <input type="text" id="myInputPackage" onkeyup="myPackageSearch()" placeholder="Search for tags..">
+            <ul id="package-list" class="list-group" style="height: 500px;overflow: scroll;">
+            </ul>
+          </div>
+          <div class="col-md-8">
+            <div class="col-md-6" style="border: 1px solid #ccc;padding: 10px;">
+              <p>Package: <b id="selected_tags"> </b></p>
+              <div>
+                <!--<input type="text" id="mannualInputTags" placeholder="enter your tags..">
+                <button id="mannualTagUpdate" type="submit" class="btn btn-primary" onclick="setMannualTagUpdateFunc(event)">Add</button>-->
+                <ul id="droppable-list" class="list-group droppable" style="background-color:#eeeeee;height:450px;overflow: scroll;">
+                </ul>
+                <button id="setTagUpdate" type="submit" class="btn btn-primary" onclick="setTagUpdateFunc(event)">Submit</button>
+              </div>
+            </div> 
+            <div class="col-md-6">
+              <input type="text" id="myInputTags" onkeyup="myTagSearch()" placeholder="Search for tags..">
+              <ul id="tag-list" class="list-group droppable" style="background-color:#eeeeee;height:530px;overflow: scroll;">
+              </ul>
+            </div> 
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+    <!-- Including Bootstrap JS (with its jQuery dependency) so that dynamic components work -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    
+    
+    <script src="http://code.jquery.com/ui/1.9.1/jquery-ui.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+    <script src="main.js"></script>
+  </body>
+</html>
