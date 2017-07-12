@@ -38,7 +38,10 @@ class UserJson(object):
 
     def get_user_json(self, input_json):
         user_json= {}
+        ecosystem = input_json['ecosystem']
         file_name = self.get_file_name(input_json)
+        if ecosystem != 'pypi':
+            file_name = ecosystem + "/"+ file_name
         file_data = self.read_json_file(file_name)
         user_json['user'] = input_json['user']
         user_json['data'] = file_data
@@ -47,6 +50,9 @@ class UserJson(object):
     def submit_user_tags(self, input_json):    
         file_name = self.get_file_name(input_json)
         data = input_json['data']
+        ecosystem = input_json['data']['ecosystem']
+        if ecosystem != 'pypi':
+            file_name = ecosystem + "/"+ file_name
         if self.write_json_file(file_name, data):
             return {"Tagging": "Successful!"}
         return {"Tagging": "Failed :("}    

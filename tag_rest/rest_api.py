@@ -62,7 +62,7 @@ def add_package_tags():
 def get_user_json():
     input_json = request.get_json()
     app.logger.info("User requested")
-    expected_key = set(['user'])
+    expected_key = set(['user', 'ecosystem'])
     if expected_key != set(input_json.keys()):
         response = {'message': 'Invalid keys found in input: ' + ','.join(input_json.keys())}
         return flask.jsonify(response), 400
