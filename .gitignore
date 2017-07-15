@@ -1,0 +1,12 @@
+*.pyc
+*_maven.json
+*_npm.json
+*_python.json
+_manifest.json
+config.py
+error.log
+docker-compose-tagging.yaml
+env.sh
+.env
+secret*.yaml
+configmap*.yaml

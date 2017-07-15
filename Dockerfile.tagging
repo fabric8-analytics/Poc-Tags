@@ -1,0 +1,39 @@
+FROM centos:7
+MAINTAINER Sarah Masud <smasud@redhat.com>
+
+ENV PYTHONPATH=/
+
+RUN yum install -y epel-release && \
+    yum install -y python-pip python-devel gcc && \
+    yum install -y zip tar wget && \
+    yum clean all
+
+EXPOSE 9000
+
+# --------------------------------------------------------------------------------------------------
+# install python packages
+# --------------------------------------------------------------------------------------------------
+COPY /tag_rest/requirements.txt /
+RUN pip install -r /requirements.txt && rm /requirements.txt
+
+
+# --------------------------------------------------------------------------------------------------
+# copy src code and scripts into root dir /
+# the rest_api.py code assumes this dir structure
+# --------------------------------------------------------------------------------------------------
+COPY /tag_rest /tag_rest
+COPY /tag_rest/config.py.template /tag_rest/config.py
+ 
+# --------------------------------------------------------------------------------------------------
+# add entrypoint for the container
+# --------------------------------------------------------------------------------------------------
+ADD /tag_rest/entrypoint.sh /bin/entrypoint.sh
+
+# ---------------------------------------------------------------------------------------------------
+# Give proper file permission
+# --------------------------------------------------------------------------------------------------
+RUN chown -R 1001:0 /tag_rest && \
+	chown -R 1001:0 /bin/entrypoint.sh && \
+	chmod +x /bin/entrypoint.sh	
+
+ENTRYPOINT ["/bin/entrypoint.sh"]

@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: BuildConfig
+metadata:
+  creationTimestamp: null
+  labels:
+    io.kompose.service: tagging
+  name: tagging
+spec:
+  nodeSelector: null
+  output:
+    to:
+      kind: ImageStreamTag
+      name: tagging:latest
+  postCommit: {}
+  resources: {}
+  runPolicy: Serial
+  source:
+    git:
+      ref: containerize
+      uri: https://github.com/sara-02/Poc-Tags.git
+    type: Git
+  strategy:
+    dockerStrategy:
+      dockerfilePath: Dockerfile.tagging
+    type: Docker
+  triggers:
+  - type: ConfigChange
+  - type: ImageChange
+status:
+  lastVersion: 0
